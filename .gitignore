@@ -1,1 +1,10 @@
+## MacOS files ##
 /**/.DS_Store
+
+## Project ignore ##
+/.idea
+/target
+
+## Compiled Sources ##
+!/target/classes
+

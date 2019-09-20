@@ -1,10 +1,10 @@
 //
 // Turing machine: accept prime number on the tape
-// Input format: unary numer 111...111
+// Input format: unary number 111...111
 // Created by Egor Orachyov on 15.09.19
 //
 
-name: prime number
+name: prime umber
 init: q0
 accept: prime
 
