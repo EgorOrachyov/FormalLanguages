@@ -9,6 +9,8 @@ public class TuringMachine {
     private String init;
     private Set<String> accept;
     private Map<Context,Transition> transitions;
+    private Set<String> states;
+    private Set<String> gamma;
 
     public TuringMachine(String name, String description, String init, Set<String> accept, Map<Context,Transition> transitions) {
         this.name = name;
@@ -16,6 +18,8 @@ public class TuringMachine {
         this.init = init;
         this.accept = accept;
         this.transitions = transitions;
+        computeGamma();
+        computeStates();
     }
 
     public String getName() {
@@ -38,12 +42,11 @@ public class TuringMachine {
         return transitions;
     }
 
+    public Set<String> getGamma() {
+        return gamma;
+    }
+
     public Set<String> getStates() {
-        Set<String> states = new HashSet<>();
-        transitions.forEach((context, transition) -> {
-            states.add(context.name);
-            states.add(transition.name);
-        });
         return states;
     }
 
@@ -78,6 +81,22 @@ public class TuringMachine {
         });
 
         return builder.toString();
+    }
+
+    private void computeStates() {
+        states = new HashSet<>();
+        transitions.forEach((context, transition) -> {
+            states.add(context.name);
+            states.add(transition.name);
+        });
+    }
+
+    private void computeGamma() {
+        gamma = new HashSet<>();
+        transitions.forEach((context, transition) -> {
+            gamma.add(context.symbol);
+            gamma.add(transition.symbol);
+        });
     }
 
     public static enum Direction {

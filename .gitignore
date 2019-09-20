@@ -3,8 +3,4 @@
 
 ## Project ignore ##
 /.idea
-/target
-
-## Compiled Sources ##
-!/target/classes
-
+/target/generated-sources
