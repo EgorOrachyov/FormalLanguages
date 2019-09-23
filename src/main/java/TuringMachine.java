@@ -50,6 +50,16 @@ public class TuringMachine {
         return states;
     }
 
+    public Set<Context> getContext(String state) {
+        Set<Context> res = new HashSet<>();
+        transitions.forEach((context, transition) -> {
+            if (context.getName().equals(state)) {
+                res.add(context);
+            }
+        });
+        return res;
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -135,8 +145,19 @@ public class TuringMachine {
         }
 
         @Override
+        public String toString() {
+            return name + "," + symbol;
+        }
+
+        @Override
         public int hashCode() {
             return (name.hashCode() + symbol.hashCode()) % Integer.MAX_VALUE;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            Context c = (Context) obj;
+            return c.getSymbol().equals(symbol) && c.getName().equals(name);
         }
 
         public String getName() {
@@ -157,6 +178,11 @@ public class TuringMachine {
             this.name = name;
             this.symbol = symbol;
             this.direction = direction;
+        }
+
+        @Override
+        public String toString() {
+            return name + "," + symbol + "," + direction;
         }
 
         public String getName() {

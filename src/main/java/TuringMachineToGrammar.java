@@ -31,9 +31,12 @@ public class TuringMachineToGrammar {
                     addRule(c.getName() + "[" + a + "," + c.getSymbol() + "]", "[" + a + "," + t.getSymbol() + "]" + t.getName());
                 });
             } else if (t.getDirection() == TuringMachine.Direction.Left) {
-                sigma.forEach(l -> {
-                    sigma.forEach(r -> {
-                        gamma.forEach(g -> {
+
+                Set<TuringMachine.Context> contexts = machine.getContext(c.getName());
+                contexts.forEach(left -> {
+                    sigma.forEach(l -> {
+                        sigma.forEach(r -> {
+                            String g = left.getSymbol();
                             String context = "[" + l + "," + g + "]";
                             String state = c.getName() + "[" + r + "," + c.getSymbol() + "]";
                             String prod = t.getName() + context + "[" + r + "," + t.getSymbol() + "]";
@@ -41,6 +44,17 @@ public class TuringMachineToGrammar {
                         });
                     });
                 });
+
+                // sigma.forEach(l -> {
+                //     sigma.forEach(r -> {
+                //         gamma.forEach(g -> {
+                //             String context = "[" + l + "," + g + "]";
+                //             String state = c.getName() + "[" + r + "," + c.getSymbol() + "]";
+                //             String prod = t.getName() + context + "[" + r + "," + t.getSymbol() + "]";
+                //             addRule(context + state, prod);
+                //         });
+                //     });
+                // });
             }
         });
 
