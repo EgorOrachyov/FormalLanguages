@@ -3,7 +3,7 @@ import java.io.FileOutputStream;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        TuringMachine machine = new TuringMachineLoader().load(new FileInputStream("PrimeNumsMT.txt"));
+        TuringMachine machine = new TuringMachineLoader().load(new FileInputStream("PrimeNums.txt"));
         System.out.println(machine.getGamma());
         System.out.println(machine.getAccept());
         System.out.println(machine.getStates().size());
@@ -20,5 +20,6 @@ public class Main {
         System.out.println(loaded.getFirst().size());
         System.out.println(loaded.getMain().size());
         System.out.println(loaded.getLast().size());
+        System.out.println(loaded);
     }
 }

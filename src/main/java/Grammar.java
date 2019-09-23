@@ -28,4 +28,27 @@ public class Grammar {
     public List<Pair<String, String>> getLast() {
         return last;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("Start").append(init).append("\n");
+        listInfo("First", builder, first);
+        listInfo("Main", builder, main);
+        listInfo("Last", builder, last);
+
+        return builder.toString();
+    }
+
+    private void listInfo(String info, StringBuilder builder, List<Pair<String, String>> list) {
+        builder.append(info)
+                .append("\n");
+        list.forEach(s -> {
+            builder.append(s.first())
+                    .append(" -> ")
+                    .append(s.second())
+                    .append(" ;\n");
+        });
+    }
 }
