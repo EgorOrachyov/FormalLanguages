@@ -107,7 +107,7 @@ moveLeft,1
 moveLeft,1,<
 
 moveLeft,%
-moveLeft,%,<
+moveLeft,1,<
 
 moveLeft,#
 moveLeft,#,<

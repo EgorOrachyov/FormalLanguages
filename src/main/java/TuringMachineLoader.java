@@ -8,8 +8,8 @@ public class TuringMachineLoader {
         String name = "";
         String description = "";
         String init = "";
-        Set<String> accept = new HashSet<String>();
-        Map<TuringMachine.Context, TuringMachine.Transition> transitions = new HashMap<TuringMachine.Context, TuringMachine.Transition>();
+        Set<String> accept = new LinkedHashSet<>();
+        Map<TuringMachine.Context, TuringMachine.Transition> transitions = new LinkedHashMap<>();
 
         while (in.hasNextLine()) {
 
