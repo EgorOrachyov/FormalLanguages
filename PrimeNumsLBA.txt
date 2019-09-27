@@ -4,21 +4,10 @@ accept: prime
 
 ///////////////////////
 
-init,1
-moveRight,1,>
+init,%
+begin,%,>
 
-moveRight,1
-moveRight,1,>
-
-moveRight,_
-moveLeft,$,<
-
-moveLeft,_
-leftMarker,%,>
-
-///////////////////////
-
-leftMarker,1
+begin,1
 checkInit,#,>
 
 checkInit,1
