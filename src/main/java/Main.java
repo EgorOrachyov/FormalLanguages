@@ -5,6 +5,7 @@ import java.util.Set;
 
 public class Main {
     public static void main(String[] args) throws Exception {
+        /*
         TuringMachine machine = new TuringMachineLoader().load(new FileInputStream("PrimeNumsEH.txt"));
         System.out.println(machine.getGamma());
         System.out.println(machine.getAccept());
@@ -26,19 +27,24 @@ public class Main {
         System.out.println(grammar.getLast().size());
 
         new GrammarSerialize().serialize(new FileOutputStream("PrimeNumsT0.txt"), grammar);
-
+        */
         Grammar loaded = new GrammarLoader().load(new FileInputStream("PrimeNumsT0.txt"));
         System.out.println(loaded.getFirst().size());
         System.out.println(loaded.getMain().size());
         System.out.println(loaded.getLast().size());
         System.out.println(loaded);
 
-        DerivationBuilder deriv = new DerivationBuilder(loaded);
-        System.out.println(deriv.getDerivationSeq());
-        System.out.println(deriv.applyRule("A1"));
-        System.out.println(deriv.applyRule("A2"));
-        System.out.println(deriv.applyRule("A2"));
-        System.out.println(deriv.applyRule("A2"));
+
+        DerivationBuilder derivation = new DerivationBuilder(loaded, "[,_]init[1,1][1,1][1,1][,_]");
+
+        System.out.println("\n" + derivation);
+        while (derivation.canApply()) {
+            System.out.println(derivation.applyNext());
+        }
+
+        while (derivation.canApplyFinal()) {
+            System.out.println(derivation.applyNextFinal());
+        }
 
     }
 
