@@ -14,7 +14,7 @@ moveRight,_
 moveLeft,$,<
 
 moveLeft,_
-leftMarker,¢,>
+leftMarker,%,>
 
 ///////////////////////
 
@@ -124,8 +124,8 @@ moveLeft,1,<
 moveLeft,#
 moveLeft,#,<
 
-moveLeft,¢
-markSt,¢,>
+moveLeft,%
+markSt,%,>
 
 ///////////////////////
 
