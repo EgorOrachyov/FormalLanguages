@@ -3,8 +3,8 @@ import java.util.Optional;
 public class DerivationBuilder {
     private Grammar grammar;
     private String derivation;
-    private Pair<String,String> nextRule;
-    private Pair<String,String> nextRuleFinal;
+    protected Pair<String,String> nextRule;
+    protected Pair<String,String> nextRuleFinal;
 
     public DerivationBuilder(Grammar grammar) {
         this.grammar = grammar;

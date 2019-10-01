@@ -29,13 +29,7 @@ public class Main {
         new GrammarSerialize().serialize(new FileOutputStream("PrimeNumsT0.txt"), grammar);
         */
         Grammar loaded = new GrammarLoader().load(new FileInputStream("PrimeNumsT0.txt"));
-        System.out.println(loaded.getFirst().size());
-        System.out.println(loaded.getMain().size());
-        System.out.println(loaded.getLast().size());
-        System.out.println(loaded);
-
-
-        DerivationBuilder derivation = new DerivationBuilder(loaded, "[,_]init[1,1][1,1][1,1][,_]");
+        DerivationBuilder derivation = new DerivationBuilder(loaded, "[,_]init[1,1][1,1][1,1][1,1][1,1][,_]");
 
         System.out.println("\n" + derivation);
         while (derivation.canApply()) {
