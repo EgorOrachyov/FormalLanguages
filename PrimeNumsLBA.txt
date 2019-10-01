@@ -5,9 +5,9 @@ accept: prime
 ///////////////////////
 
 init,%
-begin,%,>
+init,%,>
 
-begin,1
+init,1
 checkInit,#,>
 
 checkInit,1
