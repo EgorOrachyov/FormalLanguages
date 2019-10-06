@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 public class DerivationBuilder {
@@ -46,6 +49,13 @@ public class DerivationBuilder {
             }
         }
 
+        for (Pair<String,String> p : grammar.getFirst()) {
+            if (derivation.contains(p.first())) {
+                nextRule = p;
+                return true;
+            }
+        }
+
         return false;
     }
 
@@ -63,11 +73,9 @@ public class DerivationBuilder {
                 .orElse(derivation);
     }
 
-    public String applyRule(String rule) {
-        return Optional
-                .ofNullable(getRule(rule))
-                .map(p -> derivation = derivation.replace(p.first(), p.second()))
-                .orElse(derivation);
+    public String applyRule(Pair<String,String> rule) {
+        derivation = derivation.replace(rule.first(), rule.second());
+        return derivation;
     }
 
     private Pair<String,String> getRule(String rule) {
@@ -90,6 +98,30 @@ public class DerivationBuilder {
         }
 
         return null;
+    }
+
+    public List<Pair<String, String>> getAll(String rule) {
+        ArrayList<Pair<String, String>> rules = new ArrayList<>();
+
+        for (Pair<String,String> p : grammar.getMain()) {
+            if (p.first().equals(rule)) {
+                rules.add(p);
+            }
+        }
+
+        for (Pair<String,String> p : grammar.getLast()) {
+            if (p.first().equals(rule)) {
+                rules.add(p);
+            }
+        }
+
+        for (Pair<String,String> p : grammar.getFirst()) {
+            if (p.first().equals(rule)) {
+                rules.add(p);
+            }
+        }
+
+        return rules;
     }
 
 }
