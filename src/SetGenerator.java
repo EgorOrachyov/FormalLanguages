@@ -5,10 +5,10 @@ public class SetGenerator {
 
     private Set<String> statesLeft = new LinkedHashSet<>();
     private Set<String> statesRight = new LinkedHashSet<>();
-    private TuringMachine machine;
+    private Tm machine;
     private Set<String> gamma;
 
-    public SetGenerator(TuringMachine machine, Set<String> gamma) {
+    public SetGenerator(Tm machine, Set<String> gamma) {
         this.machine = machine;
         this.gamma = gamma;
     }
@@ -90,7 +90,7 @@ public class SetGenerator {
     }
 
     public static void main(String[] args) throws Exception {
-        TuringMachine machine = new TuringMachineLoader().load(new FileInputStream("PrimeNumsLBA.txt"));
+        Tm machine = new TmLoader().load(new FileInputStream("PrimeNumsLBA.txt"));
 
         Set<String> gamma = new HashSet<>();
         gamma.add("1");

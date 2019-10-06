@@ -2,7 +2,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class TuringMachine {
+public class Tm {
 
     private String name;
     private String description;
@@ -12,7 +12,7 @@ public class TuringMachine {
     private Set<String> states;
     private Set<String> gamma;
 
-    public TuringMachine(String name, String description, String init, Set<String> accept, Map<Context,Transition> transitions) {
+    public Tm(String name, String description, String init, Set<String> accept, Map<Context,Transition> transitions) {
         this.name = name;
         this.description = description;
         this.init = init;

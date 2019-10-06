@@ -1,15 +1,15 @@
 import java.io.InputStream;
 import java.util.*;
 
-public class TuringMachineLoader {
+public class TmLoader {
 
-    public TuringMachine load(InputStream inputStream) {
+    public Tm load(InputStream inputStream) {
         Scanner in = new Scanner(inputStream);
         String name = "";
         String description = "";
         String init = "";
         Set<String> accept = new LinkedHashSet<>();
-        Map<TuringMachine.Context, TuringMachine.Transition> transitions = new LinkedHashMap<>();
+        Map<Tm.Context, Tm.Transition> transitions = new LinkedHashMap<>();
 
         while (in.hasNextLine()) {
 
@@ -33,12 +33,12 @@ public class TuringMachineLoader {
                 String[] l1 = line.split(",");
                 String[] l2 = in.nextLine().split(",");
 
-                transitions.put(new TuringMachine.Context(l1[0], l1[1]),
-                        new TuringMachine.Transition(l2[0], l2[1], TuringMachine.Direction.fromString(l2[2])));
+                transitions.put(new Tm.Context(l1[0], l1[1]),
+                        new Tm.Transition(l2[0], l2[1], Tm.Direction.fromString(l2[2])));
             }
         }
 
-        return new TuringMachine(name, "", init, accept, transitions);
+        return new Tm(name, "", init, accept, transitions);
     }
 
 }

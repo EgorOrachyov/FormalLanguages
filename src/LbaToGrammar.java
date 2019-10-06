@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.function.Consumer;
 
 public class LbaToGrammar {
-    private TuringMachine machine;
+    private Tm machine;
     private Set<String> gamma;
     private Set<String> statesL;
     private Set<String> statesR;
@@ -14,7 +14,7 @@ public class LbaToGrammar {
     private List<Pair<String,String>> main = new ArrayList<>();
     private List<Pair<String,String>> last = new ArrayList<>();
 
-    public LbaToGrammar(TuringMachine machine, Set<String> gamma, Set<String> statesL, Set<String> statesR) {
+    public LbaToGrammar(Tm machine, Set<String> gamma, Set<String> statesL, Set<String> statesR) {
         this.machine = machine;
         this.gamma = gamma;
         this.statesL = statesL;
@@ -23,7 +23,7 @@ public class LbaToGrammar {
         this.R = "$";
     }
 
-    public LbaToGrammar(TuringMachine machine, Set<String> gamma, Set<String> statesL, Set<String> statesR, String L, String R) {
+    public LbaToGrammar(Tm machine, Set<String> gamma, Set<String> statesL, Set<String> statesR, String L, String R) {
         this.machine = machine;
         this.gamma = gamma;
         this.statesL = statesL;
@@ -35,7 +35,7 @@ public class LbaToGrammar {
     public Grammar convert() {
         String init = machine.getInit();
         Set<String> accept = machine.getAccept();
-        Map<TuringMachine.Context, TuringMachine.Transition> transitions = machine.getTransitions();
+        Map<Tm.Context, Tm.Transition> transitions = machine.getTransitions();
 
         addFirstRule("A1", createVar(init, L, "1", "1") + "A2");
         addFirstRule("A2", createVar("1", "1") + "A2");
@@ -46,10 +46,10 @@ public class LbaToGrammar {
             String q = context.getName();
             String p = transition.getName();
 
-            TuringMachine.Direction d = transition.getDirection();
-            Set<TuringMachine.Context> ctx = machine.getContext(p);
+            Tm.Direction d = transition.getDirection();
+            Set<Tm.Context> ctx = machine.getContext(p);
 
-            if (d == TuringMachine.Direction.Right) {
+            if (d == Tm.Direction.Right) {
                 if (s.equals(L)) {
 
                     /////////////////////////// 1 ///////////////////////////
@@ -95,7 +95,7 @@ public class LbaToGrammar {
                                 createVar(transition.getSymbol(), "1", p, R));
 
                 }
-            } else if (d == TuringMachine.Direction.Stay) {
+            } else if (d == Tm.Direction.Stay) {
                 if (s.equals(L)) {
 
                     /////////////////////////// 1 ///////////////////////////
@@ -134,7 +134,7 @@ public class LbaToGrammar {
                                 createVar(transition.getSymbol(), "1", R));
 
                 }
-            } else if (d == TuringMachine.Direction.Left) {
+            } else if (d == Tm.Direction.Left) {
                 if (s.equals(R)) {
 
                     /////////////////////////// 3 ///////////////////////////
@@ -204,7 +204,7 @@ public class LbaToGrammar {
         return new Grammar("A1", first, main, last);
     }
 
-    private void forEachCtxGamma(Set<TuringMachine.Context> ctx, Consumer<? super  String> action) {
+    private void forEachCtxGamma(Set<Tm.Context> ctx, Consumer<? super  String> action) {
         ctx.forEach(c -> {
             if (!c.getSymbol().equals(R) && !c.getSymbol().equals(L)) {
                 action.accept(c.getSymbol());
@@ -236,17 +236,8 @@ public class LbaToGrammar {
         return "[" + X + "," + a + "]";
     }
 
-    private boolean contains(Set<TuringMachine.Context> context, String symbol) {
-        for (TuringMachine.Context c : context) {
-            if (c.getSymbol().equals(symbol))
-                return true;
-        }
-
-        return false;
-    }
-
     public static void main(String[] args) throws Exception {
-        TuringMachine machine = new TuringMachineLoader().load(new FileInputStream("PrimeNumsLBA.txt"));
+        Tm machine = new TmLoader().load(new FileInputStream("PrimeNumsLBA.txt"));
 
         Set<String> gamma = new HashSet<>();
         gamma.add("1");
