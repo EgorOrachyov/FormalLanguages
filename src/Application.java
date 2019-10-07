@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -148,6 +149,8 @@ public class Application {
     }
 
     private void d(String inFile, int count) throws Exception {
+        List<String> list = new LinkedList<>();
+
         int derived = 0;
         int currentNum = 0;
 
@@ -158,31 +161,32 @@ public class Application {
             List<Pair<String, String>> all = builder.getAll("A2");
 
             builder.canApply();
-            out.println(builder.applyNext());
+            list.add(builder.applyNext());
 
             for (int i = 0; i < currentNum; i++) {
-                out.println(builder.applyRule(all.get(0)));
+                list.add(builder.applyRule(all.get(0)));
             }
 
-            out.println(builder.applyRule(all.get(1)));
+            list.add(builder.applyRule(all.get(1)));
 
             while (builder.canApply()) {
-                out.println(builder.applyNext());
+                list.add(builder.applyNext());
             }
 
             while (builder.canApplyFinal()) {
-                out.println(builder.applyNextFinal());
+                list.add(builder.applyNextFinal());
             }
 
             if (containsOnly(builder.getDerivationSeq(), '1')) {
-                out.println(builder + " is prime" + "\n");
                 derived += 1;
-            }
-            else {
-                out.println("\n");
+                out.println(builder + " is prime");
+                out.println("Derivation:");
+                list.forEach(s -> out.println(s));
+                out.println();
             }
 
             currentNum += 1;
+            list.clear();
         }
     }
 
