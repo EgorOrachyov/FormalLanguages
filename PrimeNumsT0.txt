@@ -1,72 +1,72 @@
 A1
 
-A1 [,_]initA2
-A2 [1,1]A2
-A2 [,_]
+A1 -> [,_]initA2
+A2 -> [1,1]A2
+A2 -> [,_]
 
-init[1,1] [1,#]checkInit
-checkInit[1,1] [1,#]markDiv
-markDiv[,_] prime[,_]
-[1,#]markDiv[1,1] copy1[1,#][1,#]
-[1,1]markDiv[1,1] copy1[1,1][1,#]
-[1,#]markDiv[1,#] copy1[1,#][1,#]
-[1,1]markDiv[1,#] copy1[1,1][1,#]
-[1,#]copy1[1,1] copy1[1,#][1,1]
-[1,1]copy1[1,1] copy1[1,1][1,1]
-[1,#]copy1[1,#] copy2[1,#][1,#]
-[1,1]copy1[1,#] copy2[1,1][1,#]
-[1,#]copy2[1,1] copy2[1,#][1,1]
-[1,1]copy2[1,1] copy2[1,1][1,1]
-copy2[1,#] [1,1]copy3
-copy3[1,1] [1,#]copy4
-[1,1]copy3[1,#] finishCopy1[1,1][1,#]
-copy4[1,1] [1,1]copy4
-copy4[1,#] [1,#]copy5
-copy5[1,1] [1,1]copy5
-copy5[1,#] [1,1]copy6
-[1,#]copy6[1,1] copy1[1,#][1,#]
-[1,1]copy6[1,1] copy1[1,1][1,#]
-[1,#]copy6[1,#] copy1[1,#][1,#]
-[1,1]copy6[1,#] copy1[1,1][1,#]
-[,_]copy6[,_] moveLeft[,_][,_]
-[1,#]copy6[,_] moveLeft[1,#][,_]
-[1,1]copy6[,_] moveLeft[1,1][,_]
-finishCopy1[1,1] [1,#]finishCopy2
-finishCopy2[1,#] [1,#]finishCopy3
-finishCopy3[1,1] [1,#]copyDone1
-finishCopy3[1,#] [1,#]copyDone2
-copyDone1[1,1] [1,1]copyDone1
-copyDone1[1,#] [1,1]copyDone2
-copyDone2[1,#] [1,#]copyDone3
-copyDone2[1,1] [1,#]copyDone3
-[,_]copyDone2[,_] moveLeft[,_][,_]
-[1,#]copyDone2[,_] moveLeft[1,#][,_]
-[1,1]copyDone2[,_] moveLeft[1,1][,_]
-[1,#]copyDone3[1,1] copy1[1,#][1,#]
-[1,1]copyDone3[1,1] copy1[1,1][1,#]
-[1,#]copyDone3[1,#] copy1[1,#][1,#]
-[1,1]copyDone3[1,#] copy1[1,1][1,#]
-copyDone3[,_] notPrime[,_]
-[,_]moveLeft[1,1] moveLeft[,_][1,1]
-[1,#]moveLeft[1,1] moveLeft[1,#][1,1]
-[1,1]moveLeft[1,1] moveLeft[1,1][1,1]
-[,_]moveLeft[1,#] moveLeft[,_][1,#]
-[1,#]moveLeft[1,#] moveLeft[1,#][1,#]
-[1,1]moveLeft[1,#] moveLeft[1,1][1,#]
-moveLeft[,_] [,_]markSt
-markSt[1,1] [1,#]incDiv1
-markSt[1,#] [1,#]incDiv2
-incDiv1[1,1] [1,1]incDiv1
-incDiv1[1,#] [1,1]incDiv2
-incDiv2[1,#] [1,1]incDiv3
-incDiv2[1,1] [1,1]incDiv2
-incDiv3[1,#] [1,#]markDiv
-incDiv3[1,1] [1,#]markDiv
+init[1,1] -> [1,#]checkInit
+checkInit[1,1] -> [1,#]markDiv
+markDiv[,_] -> prime[,_]
+[1,#]markDiv[1,1] -> copy1[1,#][1,#]
+[1,1]markDiv[1,1] -> copy1[1,1][1,#]
+[1,#]markDiv[1,#] -> copy1[1,#][1,#]
+[1,1]markDiv[1,#] -> copy1[1,1][1,#]
+[1,#]copy1[1,1] -> copy1[1,#][1,1]
+[1,1]copy1[1,1] -> copy1[1,1][1,1]
+[1,#]copy1[1,#] -> copy2[1,#][1,#]
+[1,1]copy1[1,#] -> copy2[1,1][1,#]
+[1,#]copy2[1,1] -> copy2[1,#][1,1]
+[1,1]copy2[1,1] -> copy2[1,1][1,1]
+copy2[1,#] -> [1,1]copy3
+copy3[1,1] -> [1,#]copy4
+[1,1]copy3[1,#] -> finishCopy1[1,1][1,#]
+copy4[1,1] -> [1,1]copy4
+copy4[1,#] -> [1,#]copy5
+copy5[1,1] -> [1,1]copy5
+copy5[1,#] -> [1,1]copy6
+[1,#]copy6[1,1] -> copy1[1,#][1,#]
+[1,1]copy6[1,1] -> copy1[1,1][1,#]
+[1,#]copy6[1,#] -> copy1[1,#][1,#]
+[1,1]copy6[1,#] -> copy1[1,1][1,#]
+[,_]copy6[,_] -> moveLeft[,_][,_]
+[1,#]copy6[,_] -> moveLeft[1,#][,_]
+[1,1]copy6[,_] -> moveLeft[1,1][,_]
+finishCopy1[1,1] -> [1,#]finishCopy2
+finishCopy2[1,#] -> [1,#]finishCopy3
+finishCopy3[1,1] -> [1,#]copyDone1
+finishCopy3[1,#] -> [1,#]copyDone2
+copyDone1[1,1] -> [1,1]copyDone1
+copyDone1[1,#] -> [1,1]copyDone2
+copyDone2[1,#] -> [1,#]copyDone3
+copyDone2[1,1] -> [1,#]copyDone3
+[,_]copyDone2[,_] -> moveLeft[,_][,_]
+[1,#]copyDone2[,_] -> moveLeft[1,#][,_]
+[1,1]copyDone2[,_] -> moveLeft[1,1][,_]
+[1,#]copyDone3[1,1] -> copy1[1,#][1,#]
+[1,1]copyDone3[1,1] -> copy1[1,1][1,#]
+[1,#]copyDone3[1,#] -> copy1[1,#][1,#]
+[1,1]copyDone3[1,#] -> copy1[1,1][1,#]
+copyDone3[,_] -> notPrime[,_]
+[,_]moveLeft[1,1] -> moveLeft[,_][1,1]
+[1,#]moveLeft[1,1] -> moveLeft[1,#][1,1]
+[1,1]moveLeft[1,1] -> moveLeft[1,1][1,1]
+[,_]moveLeft[1,#] -> moveLeft[,_][1,#]
+[1,#]moveLeft[1,#] -> moveLeft[1,#][1,#]
+[1,1]moveLeft[1,#] -> moveLeft[1,1][1,#]
+moveLeft[,_] -> [,_]markSt
+markSt[1,1] -> [1,#]incDiv1
+markSt[1,#] -> [1,#]incDiv2
+incDiv1[1,1] -> [1,1]incDiv1
+incDiv1[1,#] -> [1,1]incDiv2
+incDiv2[1,#] -> [1,1]incDiv3
+incDiv2[1,1] -> [1,1]incDiv2
+incDiv3[1,#] -> [1,#]markDiv
+incDiv3[1,1] -> [1,#]markDiv
 
-[1,1]prime prime1prime
-prime[1,1] prime1prime
-[1,#]prime prime1prime
-prime[1,#] prime1prime
-[,_]prime primeprime
-prime[,_] primeprime
-prime 
+[1,1]prime -> prime1prime
+prime[1,1] -> prime1prime
+[1,#]prime -> prime1prime
+prime[1,#] -> prime1prime
+[,_]prime -> primeprime
+prime[,_] -> primeprime
+prime -> 

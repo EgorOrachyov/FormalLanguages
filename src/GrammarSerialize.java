@@ -10,17 +10,17 @@ public class GrammarSerialize {
         writer.println();
 
         grammar.getFirst().forEach(p -> {
-            writer.println(p.first() + " " + p.second());
+            writer.println(p.first() + " -> " + p.second());
         });
         writer.println();
 
         grammar.getMain().forEach(p -> {
-            writer.println(p.first() + " " + p.second());
+            writer.println(p.first() + " -> " + p.second());
         });
         writer.println("");
 
         grammar.getLast().forEach(p -> {
-            writer.println(p.first() + " " + p.second());
+            writer.println(p.first() + " -> " + p.second());
         });
 
         writer.flush();
