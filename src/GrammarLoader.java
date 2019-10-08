@@ -28,7 +28,7 @@ public class GrammarLoader {
 
             if (l.equals("")) return;
 
-            String[] product = l.split(" ");
+            String[] product = l.split(" -> ");
             if (product.length == 2) {
                 list.add(new Pair<>(product[0], product[1]));
             } else {
