@@ -124,27 +124,32 @@ public class Application {
         Grammar g = new GrammarLoader().load(new FileInputStream(inFile));
         DerivationBuilder builder = new DerivationBuilder(g);
         List<Pair<String, String>> all = builder.getAll("A2");
+        List<String> list = new LinkedList<>();
 
         builder.canApply();
-        out.println(builder.applyNext());
+        list.add(builder.applyNext());
 
         while (ref > 0) {
-            out.println(builder.applyRule(all.get(0)));
+            list.add(builder.applyRule(all.get(0)));
             ref -= 1;
         }
 
-        out.println(builder.applyRule(all.get(1)));
+        list.add(builder.applyRule(all.get(1)));
 
         while (builder.canApply()) {
-            out.println(builder.applyNext());
+            list.add(builder.applyNext());
         }
 
         while (builder.canApplyFinal()) {
-            out.println(builder.applyNextFinal());
+            list.add(builder.applyNextFinal());
         }
 
         if (builder.getDerivationSeq().length() != num) {
+            list.forEach(s -> out.println(s));
             out.println("Is not a prime number");
+        } else {
+            list.forEach(s -> out.println(s));
+            out.println("It is a prime number");
         }
     }
 

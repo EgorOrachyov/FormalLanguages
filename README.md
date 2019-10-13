@@ -17,7 +17,7 @@ University workshop for course 'Automata and formal languages theory'
 
 ## Сборка и запуск
 
-Чтобы собрать проект понадобиться Java SE SDK 12 версии, который можно скачать 
+Чтобы собрать проект понадобиться Java SE SDK 9 версии или выше, который можно скачать 
 с официального сайта [Oracle](https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html).
 
 Проверить версию компилятора и среды исполнения можно с помощью следующих команд:
@@ -26,7 +26,7 @@ $ javac -version
 $ java -version
 ```
 
-Здесь и далее редполагается, что вы открыли терминал по адресу корневой папки.
+Здесь и далее предполагается, что вы открыли терминал по адресу корневой папки проекта.
 Чтобы собрать проект, используйте следующую команду:
 ```
 $ javac -d build -sourcepath src src/Application.java  
